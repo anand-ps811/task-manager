@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task Status</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:slnt,wght@-8,100..1000&family=Protest+Strike&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <h2>Task TRACKER</h1>
+        </div>
+        <a href="/employee/<%= userId %>">Home</a>
+    </div>
+        <div class="edit_task_page">
+
+                    <h1>Update Status</h1>
+               
+                <form id="taskForm">
+                    <input type="hidden" id="userId" value="<%= userId %>">
+
+                    <!-- Hidden or Disabled Fields -->
+                    <div >
+                        <label for="title">Title:</label>
+                        <input type="text" id="taskTitle" name="title" value="<%= task.title %>" disabled>
+                    </div>
+                    <div >
+                        <label for="description">Description:</label>
+                        <input type="text" id="taskDescription" name="description" value="<%= task.description %>" disabled>
+                    </div>
+                    <div >
+                        <label for="date">Due Date:</label>
+                        <input type="date" id="date" name="taskDate" value="<%= new Date(task.date).toISOString().split('T')[0] %>" disabled>
+                    </div>
+                    <div >
+                        <label for="assignTo">Assign To:</label>
+                        <select id="assignTo" name="assignTo" disabled>
+                            <% if (userId && task.assignedTo && userId.toString() === task.assignedTo.toString()) { %>
+                                <option value="<%= userId %>" selected><%= user.username %></option>
+                            <% } else { %>
+                                <option value="" selected>No user assigned</option>
+                            <% } %>
+                        </select>
+                        
+                        
+                    </div>
+
+                    <div>
+                        <label for="status">Status:</label>
+                        <select id="status" name="taskStatus" required>
+                            <option value="To-Do" <%= task.status === 'To-Do' ? 'selected' : '' %>>To-Do</option>
+                            <option value="Pending" <%= task.status === 'Pending' ? 'selected' : '' %>>Pending</option>
+                            <option value="Completed" <%= task.status === 'Completed' ? 'selected' : '' %>>Completed</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Update Button -->
+                    <button type="submit"  id="updateStatusButton" data-user-id="<%= userId %>">Save Changes</button>
+                </form>
+            </main>
+        </div>
+    </section>
+    <script src="/js/script.js"></script>
+</body>
+
+</html>

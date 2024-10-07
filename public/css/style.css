@@ -1,0 +1,372 @@
+/* General Styles */
+body {
+    font-family: 'Afacad Flux', sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+h1{
+    margin: 0;
+}
+h2 {
+    color: #444;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+a {
+    color: #556066;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ded4d4 !important;
+    transform: translateY(-2px);
+
+}
+.login{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+}
+
+.navbar {
+    background-color: #ffffff;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: end;
+    font-weight: 600;
+}
+
+.navbar a {
+    color: #333;
+    margin: 0 15px;
+    padding: 25px;
+}
+.logo{
+    display: flex;
+    flex: 1;
+
+}
+.role{
+    margin-left: 20px;
+}
+.logo h1{
+    font-weight: 500;
+}
+/* Forms */
+.form, .create-task-form, .update_task_form,.edit_task_page, .signUp_page, .employee-page, .manager-page {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form div, .update_task_form,.create-task-form ,.edit_task_page div {
+    margin-bottom: 15px;
+}
+
+.form label, .update_task_form,.create-task-form ,.edit_task_page label {
+    display: block;
+    margin-bottom: 5px;
+    color: #666;
+}
+
+.form input[type="email"],
+.form input[type="password"],
+.form input[type="text"],
+.form input[type="date"],
+.update_task_form input[type="text"],
+ .update_task_form input[type="date"],
+.form select,
+.update_task_form select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+    box-sizing: border-box;
+}
+.form input[type="email"],
+.form input[type="password"],
+.form input[type="text"],
+.form input[type="date"],
+.create-task-form  input[type="text"],
+.create-task-form input[type="date"],
+.form select,
+.create-task-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+    box-sizing: border-box;
+}
+.form input[type="email"],
+.form input[type="password"],
+.form input[type="text"],
+.form input[type="date"],
+.edit_task_page  input[type="text"],
+.edit_task_page input[type="date"],
+.form select,
+.edit_task_page select {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+    box-sizing: border-box;
+}
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #05acff;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #2f3132;
+}
+.updateBtns{
+    display: flex;
+    gap: 10px;
+}
+.update_task_form h1{
+    display: flex;
+    justify-content: center;
+
+}
+.edit_task_page h1{
+    display:flex;
+    justify-content: center;
+}
+.bannerFlex{
+    display: flex;
+}
+
+
+
+/* Task List */
+.taskList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: center; 
+}
+
+.taskCard {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px; 
+    margin-bottom: 20px;
+    /* transition: transform 0.2s ease, box-shadow 0.2s ease; */
+}
+
+.taskCard:hover {
+    /* transform: translateY(-5px); */
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.taskCard h4 {
+    margin-top: 0;
+    font-size: 1.2em;
+    color: #2c3e50;
+}
+
+.taskCard p.dueDate {
+    font-weight: bold;
+    color: #150c0b;
+}
+
+.taskCard p.status {
+    background-color: #ecf0f1;
+    padding: 5px 10px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.taskCard p.assignedTo {
+    font-style: italic;
+    color: #3498db;
+}
+
+
+.taskCards{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+    padding: 30px;
+}
+
+
+/* Buttons */
+.btnStyle {
+    background-color: #cd0a0a;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btnStyle:hover {
+    background-color: #000000;
+
+}
+
+/* Header */
+.header {
+    background-color: #ffffff;
+    color: #333;
+    /* padding: 10px 0; */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+/* 
+.header .logo h3 {
+    margin: 0;
+    text-align: center;
+} */
+
+.header .header_action {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.header_action a {
+    margin: 0 10px;
+}
+
+/* Main Content */
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+.home_page_flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.home_page {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.section_dark {
+    background-color: #f9f9f9;
+    color: #333;
+    padding: 20px;
+}
+.userinfo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background: skyblue; */
+}
+.headerFlex{
+    display: flex;
+    padding-left: 10px;
+}
+
+.headerFlex h1{
+    display: flex;
+    flex: 1;
+    padding: 42px;
+    /* margin: 0 !important; */
+}
+.headerButtons{
+    display: flex;
+    gap: 10px;
+    padding: 40px;
+}
+.checkStatusPage {
+    padding: 20px;
+}
+
+.statusColumns {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.statusColumn {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+}
+
+.statusColumn h2 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.taskCard {
+    background: #f9f9f9;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.taskCard p {
+    margin: 15px 0;
+}
+
+
+
+
+.mess{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+margin-top: 120px;
+}
+.pic{
+    width: 50%;
+    display: flex;
+}
+.pic img{
+    height: 95vh;
+    width: 100%;
+    padding: 15px;
+}
+.login{
+    display: flex;
+    width: 100%;
+    background-color: white;
+}
+.loginform{
+    width: 50%;
+}
+.loginform h1{
+    margin-top: 10px;
+    padding: 15px;
+}

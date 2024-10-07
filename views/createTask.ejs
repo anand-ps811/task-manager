@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:slnt,wght@-8,100..1000&family=Protest+Strike&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <h1>Task TRACKER</h1>
+        </div>
+        <a  href="/manager">Home</a>
+    </div>
+
+    <div class="create-task-form">
+        <h2>Create Task</h2>
+        <form id="createTaskForm" action="/tasks/create-task" method="POST">
+            <div>
+                <label for="taskName">Title</label>
+                <input type="text" id="taskName" name="taskName" placeholder="Task Title" required>
+            </div>
+            <div>
+                <label for="description">Description</label>
+                <input type="text" id="description" name="description" placeholder="Description" required>
+            </div>
+            <div>
+                <label for="taskDate">Due Date</label>
+                <input type="date" id="taskDate" name="taskDate" required>
+            </div>
+            <div>
+                <label for="assignTo">Assign To</label>
+                <select id="assignTo" name="assignTo" required>
+                    <option value="" disabled selected>Select employee</option>
+                    <% users.forEach(user => { %>
+                        <option value="<%= user._id %>"><%= user.username %></option>
+                    <% }) %>
+                </select>
+                
+            </div>
+             <div>
+                <label for="status">status</label>
+                <select id="status" name="status" required>
+                    <option value="">Current Status</option>
+                    <option value="To-Do">To-Do</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Completed">Completed</option>
+                </select>
+              </div>
+            <button type="submit">Create Task</button>
+        </form>
+    </div>
+    <script src="/js/script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager Page</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:slnt,wght@-8,100..1000&family=Protest+Strike&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+    <section>
+        <div class="manager_page">
+            <header class="header">
+                <div class="container">
+                    <div class="headerFlex">
+                        <h1>TASK MANAGER</h1>
+                        <div class="userinfo">
+                            <h1 class="role">Welcome <%= username %></h1>
+                            <h2 class="role">Role:<%= userRole %></h2>
+                        </div>
+                        <div class="headerButtons">
+                            <a type="button" id="createTaskButton" class="btnStyle" href="/createTask">Create Task</a>
+                            <a type="button" id="checkStatusButton" class="btnStyle" href="/checkStatus">Check Status</a>
+                            <a type="button" id="logoutButton" class="btnStyle" href="/user/logout">Logout</a>
+
+                        </div>
+                    </div>
+
+                </div>
+            </header>
+          
+            
+
+            <div>
+                <div class="taskCards">
+                    <% if (tasks.length> 0) { %>
+
+                        <% tasks.forEach(task=> { %>
+                            <div class="taskCard">
+                                <h4>
+                                    <%= task.title %>
+                                </h4>
+                                <p><strong>Due Date:</strong>
+                                    <%= new Date(task.date).toLocaleDateString() %>
+                                </p>
+                                <p><strong>Status:</strong>
+                                    <%= task.status %>
+                                </p>
+                                <p><strong>Assigned To:</strong>
+                                    <%= task.assignedTo.username %>
+                                </p>
+                                <p><strong>Assigned By:</strong>
+                                    <%= task.createdBy ? task.createdBy.username : 'Unknown' %>
+                                </p>
+
+                                <a href="/updateTask/<%= task._id %>" class="btnStyle">Update Task</a>
+                            </div>
+                            <% }); %>
+
+                                <% } else { %>
+                                    <p>No tasks available.</p>
+                                    <% } %>
+                </div>
+
+            </div>
+    </section>
+</body>
+
+</html>

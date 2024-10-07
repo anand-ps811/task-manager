@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>check status</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:slnt,wght@-8,100..1000&family=Protest+Strike&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <section>
+        <header class="header">
+            <div class="container">
+                <div class="headerFlex">
+                    <h1>Task Status</h1>
+                    <div class="headerButtons">
+                        <a href="/manager" >Home</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="statusColumns">
+            <div class="statusColumn">
+                <h2>To-Do</h2>
+                <p>Number of tasks: <%= todo.length %></p>
+                <ul>
+                    <% todo.forEach(task => { %>
+                        <li><%= task.title %></li>
+                    <% }) %>
+                </ul>
+            </div>
+
+            <div class="statusColumn">
+                <h2>Pending</h2>
+                <p>Number of tasks: <%= pending.length %></p>
+                <ul>
+                    <% pending.forEach(task => { %>
+                        <li><%= task.title %></li>
+                    <% }) %>
+                </ul>
+            </div>
+
+            <div class="statusColumn">
+                <h2>Completed</h2>
+                <p>Number of tasks: <%= completed.length %></p>
+                <ul>
+                    <% completed.forEach(task => { %>
+                        <li><%= task.title %></li>
+                    <% }) %>
+                </ul>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
