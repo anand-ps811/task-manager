@@ -1,6 +1,7 @@
 const User = require('../models/userModel');
 const Task = require('../models/taskModel'); 
-
+const Chat = require('../services/chatService')
+const authMiddleware= require('../middleware/authMiddleware')
 
 const renderRegisterPage = (req, res) => {
     res.render('register');
@@ -136,5 +137,6 @@ module.exports = {
     renderCreateTaskPage,
     renderUpdateTaskPage,
     renderEditStatusPage,
-    renderCheckStatusPage
+    renderCheckStatusPage,
+  
 };

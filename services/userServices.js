@@ -32,11 +32,13 @@ const loginUser = async (email, password) => {
     if (!user) {
         throw new Error("Invalid email or password");
     }
-
+    
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
         throw new Error("Invalid email or password");
     }
+    user.online = true;
+    await user.save();
 
     const accessToken = jwt.sign(
         { user: { id: user._id, username: user.username, email: user.email, role:user.role } },

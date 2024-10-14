@@ -2,6 +2,7 @@ const express = require('express');
 const adminMiddleware = require('../middleware/adminMiddleware')
 const authMiddleware = require('../middleware/authMiddleware')
 const viewController= require('../controller/viewController');
+const chatController = require('../controller/chatController');
 const router = express.Router();
 
 router.get('/', viewController.renderLoginPage);
@@ -12,7 +13,8 @@ router.get('/manager',adminMiddleware,viewController.renderManagerPage);
 router.get('/createTask',adminMiddleware,viewController.renderCreateTaskPage);
 router.get('/updateTask/:id', adminMiddleware,viewController.renderUpdateTaskPage);
 router.get('/editStatus/:id',authMiddleware, viewController.renderEditStatusPage);
-router.get('/checkStatus',adminMiddleware,viewController.renderCheckStatusPage)
+router.get('/checkStatus',adminMiddleware,viewController.renderCheckStatusPage);
+router.get('/chat',authMiddleware,chatController.renderChatPage);
 
 
 

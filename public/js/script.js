@@ -152,3 +152,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (parts.length === 2) return parts.pop().split(';').shift();
     }
 });
+
+document.getElementById('online-users').addEventListener('click', (event) => {
+    if (event.target.tagName === 'LI') {
+        const selectedReceiver = event.target.getAttribute('data-username');
+        updateReceiverInfo(selectedReceiver);
+    }
+});

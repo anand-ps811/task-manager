@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Items</title>
+</head>
+<body>
+    <h1>Items</h1>
+    <ul>
+        <% items.forEach(item => { %>
+            <li>
+                <%= item.name %> - <%= item.description %> - $<%= item.price %>
+                <!-- Update Form -->
+                <form action="/items/update/<%= item._id %>" method="POST" style="display:inline;">
+                    <input type="text" name="name" value="<%= item.name %>" required>
+                    <input type="text" name="description" value="<%= item.description %>" required>
+                    <input type="number" name="price" value="<%= item.price %>" required>
+                    <button type="submit">Update</button>
+                </form>
+                <!-- Delete Form -->
+                <form action="/items/delete/<%= item._id %>" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        <% }) %>
+    </ul>
+
+    <h2>Add New Item</h2>
+    <form action="/items" method="POST">
+        <input type="text" name="name" placeholder="Name" required>
+        <input type="text" name="description" placeholder="Description" required>
+        <input type="number" name="price" placeholder="Price" required>
+        <button type="submit">Add Item</button>
+    </form>
+</body>
+</html>

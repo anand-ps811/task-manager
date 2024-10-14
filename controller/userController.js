@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler');
 const { registerUser, loginUser } = require('../services/userServices');
+const User = require('../models/userModel');
 
 const userRegister = asyncHandler(async (req, res) => {
     const { username, email, password, role } = req.body;
@@ -44,7 +45,38 @@ const userLogin = asyncHandler(async (req, res) => {
     }
 });
 
+const Userlogout = async (req, res) => {
+    try {
+        // Check if req.user is defined
+        if (!req.user || !req.user.userId) {
+            console.error('User is not authenticated');
+            return res.status(401).json({ message: 'User is not authenticated' });
+        }
+
+        // Find the logged-in user and set them as offline
+        const user = await User.findById(req.user.userId);
+        if (user) {
+            user.online = false; // Set the user's status to offline
+            await user.save();
+            console.log('loged out')   // Save the change to the database
+        }
+
+        // Clear the user's session and redirect to login page
+        res.clearCookie('token', { path: '/' });
+        res.redirect('/login');
+
+    } catch (error) {
+        console.error('Error logging out user:', error);
+        res.status(500).json({ message: 'Error logging out user' });
+    }
+};
+
+
+
+
+
 module.exports = {
     userRegister,
-    userLogin
+    userLogin,
+    Userlogout
 };

@@ -1,14 +1,21 @@
 require('dotenv').config();
 const express = require('express');
+const socketIo=require('socket.io');
 const path = require('path');
+const http = require('http');
 const connectDB = require('./config/dbConnection');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-
+const viewRoute = require('./routes/viewRoute.js');
+const userRoute=require('./routes/userRoute.js');
+const taskRoute= require('./routes/taskRoute.js');
 // Connect to the database
 connectDB();
 
 const app = express();
+const server=http.createServer(app);
+const io =socketIo(server)
+
 
 // Middleware setup
 app.use(bodyParser.json());
@@ -26,9 +33,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public/css'))); // Adjust the path if necessary
 
 // Routes
-app.use('/user', require('./routes/userRoute.js'));
-app.use('/tasks', require('./routes/taskRoute.js'));
-app.use('/', require('./routes/viewRoute.js'));
+app.use('/user', userRoute);
+app.use('/tasks',taskRoute);
+app.use('/', viewRoute);
+// app.use('/chat',require('./routes/chatRoute.js'));
 
 // Catch all non-existing routes (404 error)
 app.use((req, res, next) => {
@@ -47,12 +55,7 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Test route to deliberately trigger an error
-app.get('/test-error', (req, res, next) => {
-    const error = new Error('This is a test error');
-    error.status = 500;
-    next(error); // Pass the error to the error handling middleware
-});
+
 
 // Start server
 const PORT = process.env.PORT || 3000;

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Page</title>
+    <link rel="stylesheet" href="/css/style.css"> <!-- Link to your CSS -->
+</head>
+
+<body>
+    <header>
+        <h1>Chat Room</h1>
+        <nav>
+            <a  onclick="goBack()">Go Back</a>
+            <a href="/user/logout">Logout</a>
+        </nav>
+    </header>
+
+    <main>
+       <div id="dashbord">
+        <div id="online_users">
+            <h2>Online Users</h2>
+            <ul id="user_list">
+                <h1>Welcome to the Chat Page, <%= username %>!</h1>
+                
+                        </ul>
+        </div>
+       </div>
+       <div id="chat-container">
+        <div id="receiver-info" style="display: none;">Sending messages to: </div>
+
+        <div id="chat-box">
+            <ul id="messages"></ul>
+            <input type="text" id="message" placeholder="Type a message">
+            <button id="send">Send</button>
+            <div id="group-chat-container" style="display: none;">
+                <h3 id="group-name"></h3>
+                <ul id="group-messages"></ul>
+                <input type="text" id="group-message" placeholder="Type a message to the group">
+                <button id="send-group">Send to Group</button>
+                <button id="leave-group">Leave Group</button>
+            </div>
+        </div>
+    </div>
+ 
+    </main>
+    <script>
+        function goBack() {
+            window.history.back(); 
+        }
+    </script>
+</body>
+
+</html>
