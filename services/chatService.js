@@ -9,7 +9,11 @@ const getAllUsers = async () => {
         throw error; // Propagate the error to be handled in the controller
     }
 };
+const getOnlineUsers = async () => {
+    return User.find({ online: true }).select('username');  // Fetch only online users with their username
+};
 
 module.exports = {
-    getAllUsers
+    getAllUsers,
+    getOnlineUsers
 };

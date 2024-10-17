@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const adminMiddleware = (req, res, next) => {
+const authMiddleware = (req, res, next) => {
     const token = req.cookies?.token;
 
     if (!token) {
@@ -9,26 +9,27 @@ const adminMiddleware = (req, res, next) => {
     }
 
     try {
+        // Correctly declare and assign 'decoded' in one line
         const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
         console.log('Decoded token:', decoded);  
-        req.user=decoded.user;
 
- 
+        // Attach user information to the request
         req.user = {
             userId: decoded.user.id,
-            role: decoded.user.role  ,
-            username:decoded.user.username 
+            role: decoded.user.role,
+            username: decoded.user.username
         };
 
+        // Check if the user has an 'employee' role
         if (req.user.role === 'manager') {
             next();
         } else {
-            res.redirect('/login');  
-
+            res.redirect('/login');  // Redirect if the user doesn't have the right role
         }
     } catch (err) {
+        console.error('Token verification failed:', err);
         res.redirect('/login');  
     }
 };
 
-module.exports = adminMiddleware;
+module.exports = authMiddleware;
