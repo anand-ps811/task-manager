@@ -7,7 +7,9 @@ const userRegister = asyncHandler(async (req, res) => {
     console.log('Register request received:', req.body);
 
     try {
-        const newUser = await registerUser(username, email, password, role);
+        const newUser = await registerUser(username, email, password, role, res);
+
+        // Send JSON response with user details on success
         res.redirect('/login').status(201).json({
             _id: newUser._id,
             username: newUser.username,
@@ -16,9 +18,12 @@ const userRegister = asyncHandler(async (req, res) => {
         });
     } catch (error) {
         console.error('Error registering user:', error.message);
+
+        // Send JSON error message for API response
         res.status(400).json({ message: error.message });
     }
 });
+
 
 const userLogin = asyncHandler(async (req, res) => {
     const { email, password } = req.body;

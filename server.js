@@ -20,7 +20,7 @@ const app = express();
 const server = http.createServer(app); // Attach HTTP server
 const io = socketIo(server); // Attach socket.io to the HTTP server
 
-require('./socket/chat')(io); // Import and pass io to the chat module
+require('./socket/chat')(io); //  the chat module
 
 // Middleware setup
 app.use(bodyParser.json());

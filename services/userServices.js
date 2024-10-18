@@ -1,15 +1,15 @@
 const bcrypt = require('bcryptjs'); 
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
-
-const registerUser = async (username, email, password, role) => {
+const registerUser = async (username, email, password, role, res) => {
     if (!username || !email || !password || !role) {
         throw new Error("All fields are mandatory!");
     }
 
     const userExists = await User.findOne({ email });
     if (userExists) {
-        throw new Error("User already exists");
+        // Render an error page with an alert message
+        return res.render('register', { errorMessage: 'User already exists' });
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
