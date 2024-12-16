@@ -3,15 +3,15 @@ const express = require('express');
 const socketIo = require('socket.io');
 const path = require('path');
 const http = require('http');
-const User = require('./models/userModel');
-const Group = require('./models/groupModel');
-const Message = require('./models/messageModel');
-const connectDB = require('./config/dbConnection');
+const User = require('../models/userModel');
+const Group = require('../models/groupModel');
+const Message = require('../models/messageModel');
+const connectDB = require('../config/dbConnection');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const viewRoute = require('./routes/viewRoute');
-const userRoute = require('./routes/userRoute');
-const taskRoute = require('./routes/taskRoute');
+const viewRoute = require('../routes/viewRoute');
+const userRoute = require('../routes/userRoute');
+const taskRoute = require('../routes/taskRoute');
 
 // Connect to the database
 connectDB();
@@ -20,7 +20,7 @@ const app = express();
 const server = http.createServer(app); // Attach HTTP server
 const io = socketIo(server); // Attach socket.io to the HTTP server
 
-require('./socket/chat')(io); //  the chat module
+require('../socket/chat')(io); //  the chat module
 
 // Middleware setup
 app.use(bodyParser.json());
@@ -58,8 +58,5 @@ app.use((err, req, res, next) => {
     });
 });
 
-// Start the server
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, '0.0.0.0',() => {
-    console.log(`Server started on port: ${PORT}`);
-});
+module.exports = app;
+
